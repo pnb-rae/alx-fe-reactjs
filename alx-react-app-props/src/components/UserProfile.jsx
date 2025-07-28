@@ -1,11 +1,17 @@
-const UserProfile = (props) => {
+import { useContext } from 'react';
+import UserContext from '../UserContext';
+
+function UserProfile() {
+  const userData = useContext(UserContext);
+
   return (
-    <div style={{ border: '1px solid #ccc', padding: '1rem', borderRadius: '8px', maxWidth: '300px', margin: '1rem auto' }}>
-      <h2>{props.name}</h2>
-      <p>Age: {props.age}</p>
-      <p>Bio: {props.bio}</p>
+    <div style={{ padding: '10px', border: '1px solid #ccc', marginTop: '15px' }}>
+      <h2>User Profile</h2>
+      <p>Name: {userData.name}</p>
+      <p>Email: {userData.email}</p>
     </div>
   );
-};
+}
 
 export default UserProfile;
+
