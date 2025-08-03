@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetailsWrapper from './components/RecipeDetailsWrapper';
+import SearchBar from './components/SearchBar'; // ✅ Import the new SearchBar
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             path="/"
             element={
               <>
+                <SearchBar />  {/* ✅ Add the SearchBar here */}
                 <AddRecipeForm />
                 <RecipeList />
               </>
@@ -32,6 +34,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
