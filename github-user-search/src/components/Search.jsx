@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { searchUsers } from '../services/githubService';
+import { searchUsers, fetchUserData } from '../services/githubService';
 
 const Search = () => {
   const [username, setUsername] = useState('');
@@ -16,11 +16,18 @@ const Search = () => {
     setLoading(true);
 
     try {
-      const results = await searchUsers({ username, location, minRepos });
-      if (results.length === 0) {
-        setError("Looks like we cant find the user");
+      // If only username is provided, use fetchUserData for basic search
+      if (username && !location && !minRepos) {
+        const user = await fetchUserData(username);
+        setUsers([user]); // Display single user in array
       } else {
-        setUsers(results);
+        // Advanced search with multiple criteria
+        const results = await searchUsers({ username, location, minRepos });
+        if (results.length === 0) {
+          setError('No users found matching your criteria.');
+        } else {
+          setUsers(results);
+        }
       }
     } catch (err) {
       setError('Failed to fetch users.');
@@ -82,6 +89,9 @@ const Search = () => {
               className="w-16 h-16 rounded-full mb-2"
             />
             <h3 className="font-bold">{user.login}</h3>
+            {user.location && (
+              <p className="text-gray-500 text-sm">{user.location}</p>
+            )}
             <a
               href={user.html_url}
               target="_blank"
@@ -98,6 +108,7 @@ const Search = () => {
 };
 
 export default Search;
+
 
 
 
