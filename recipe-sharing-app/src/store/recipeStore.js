@@ -1,4 +1,3 @@
-
 import { create } from 'zustand';
 
 export const useRecipeStore = create((set) => ({
@@ -9,3 +8,4 @@ export const useRecipeStore = create((set) => ({
     })),
   setRecipes: (recipes) => set({ recipes }),
 }));
+
