@@ -10,25 +10,33 @@ const AddRecipeForm = () => {
     event.preventDefault();
     if (!title.trim() || !description.trim()) return;
 
-    addRecipe({ id: Date.now(), title, description });
+    addRecipe({
+      id: Date.now(), // unique ID
+      title,
+      description,
+    });
+
+    // Reset form
     setTitle('');
     setDescription('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
         required
+        style={{ display: 'block', marginBottom: '10px', width: '100%' }}
       />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Description"
         required
+        style={{ display: 'block', marginBottom: '10px', width: '100%' }}
       />
       <button type="submit">Add Recipe</button>
     </form>
@@ -36,4 +44,5 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
+
 
