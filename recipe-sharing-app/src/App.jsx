@@ -2,7 +2,9 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetailsWrapper from './components/RecipeDetailsWrapper';
-import SearchBar from './components/SearchBar'; // ✅ Import the new SearchBar
+import SearchBar from './components/SearchBar';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
           <h1>Recipe Sharing App</h1>
           <nav style={{ marginBottom: '20px' }}>
             <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
+            <Link to="/favorites" style={{ marginRight: '10px' }}>Favorites</Link>
+            <Link to="/recommendations">Recommendations</Link>
           </nav>
         </header>
 
@@ -20,13 +24,15 @@ function App() {
             path="/"
             element={
               <>
-                <SearchBar />  {/* ✅ Add the SearchBar here */}
+                <SearchBar />
                 <AddRecipeForm />
                 <RecipeList />
               </>
             }
           />
           <Route path="/recipe/:id" element={<RecipeDetailsWrapper />} />
+          <Route path="/favorites" element={<FavoritesList />} />
+          <Route path="/recommendations" element={<RecommendationsList />} />
         </Routes>
       </div>
     </BrowserRouter>
@@ -34,6 +40,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
