@@ -21,18 +21,18 @@ const AddRecipeForm = () => {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
+        placeholder="Recipe Title"
         required
+        style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '8px' }}
       />
-      <br />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
+        placeholder="Recipe Description"
         required
+        style={{ display: 'block', width: '100%', marginBottom: '10px', padding: '8px' }}
       />
-      <br />
-      <button type="submit">Add Recipe</button>
+      <button type="submit" style={{ padding: '10px 15px', cursor: 'pointer' }}>Add Recipe</button>
     </form>
   );
 };

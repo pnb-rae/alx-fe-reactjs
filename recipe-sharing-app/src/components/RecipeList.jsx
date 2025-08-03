@@ -10,7 +10,15 @@ const RecipeList = () => {
         <p>No recipes yet. Add one!</p>
       ) : (
         recipes.map((recipe) => (
-          <div key={recipe.id} style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
+          <div
+            key={recipe.id}
+            style={{
+              border: '1px solid #ccc',
+              margin: '10px 0',
+              padding: '10px',
+              borderRadius: '8px',
+            }}
+          >
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
           </div>
@@ -21,3 +29,4 @@ const RecipeList = () => {
 };
 
 export default RecipeList;
+
